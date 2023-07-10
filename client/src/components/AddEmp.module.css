@@ -1,0 +1,61 @@
+.container {
+  background-color: rgb(250, 250, 250);
+  height: 100vh;
+}
+.form {
+  display: grid;
+  place-items: center;
+}
+.fieldContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.fieldContainer label {
+  width: 20rem;
+  font-size: 1.1rem;
+}
+.fieldContainer input {
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+  border: 1px solid gray;
+  outline: none;
+  font-size: 1rem;
+}
+.fieldContainerr {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+.fieldContainerr label {
+  font-size: 1.1rem;
+}
+.radioInput {
+  display: flex;
+  align-items: center;
+}
+.radio {
+  margin-right: 3rem;
+}
+.radio input,
+span {
+  font-size: 1.2rem;
+  margin: 0 0.2rem;
+}
+.form button {
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 10rem;
+  letter-spacing: 0.1rem;
+  transition: 0.4s ease;
+  margin-top: 2.5rem;
+  background-color: teal;
+  color: #fff;
+}
+.form button:hover {
+  transform: scale(1.05);
+}
