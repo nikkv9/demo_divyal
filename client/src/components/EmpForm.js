@@ -32,7 +32,10 @@ const EmpForm = () => {
         <Link to="/emp/add" className={stl.addEmpLink}>
           <button>Add Emp</button>
         </Link>
-        <button>Add Dept</button>
+
+        <Link to="/dept/add" className={stl.addDeptLink}>
+          <button>Add Dept</button>
+        </Link>
       </div>
     </div>
   );

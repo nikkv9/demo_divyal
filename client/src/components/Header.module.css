@@ -10,11 +10,13 @@
 .left {
   padding-left: 1rem;
 }
+.left a {
+  text-decoration: none;
+  color: teal;
+}
 .left,
 .mid {
   font-size: 1.2rem;
-}
-.mid {
   font-weight: bold;
   letter-spacing: 0.05rem;
 }

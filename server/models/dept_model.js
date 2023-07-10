@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
 
 const deptSchema = new mongoose.Schema({
-  dept_name: {
+  deptName: {
     type: String,
     required: true,
   },
-  type: {
+  deptType: {
     type: String,
     required: true,
   },
   active: {
-    type: Number,
-    required: true,
+    type: Boolean,
+    default: true,
   },
   address: {
     type: String,
@@ -19,4 +19,4 @@ const deptSchema = new mongoose.Schema({
   },
 });
 
-export const Emp = mongoose.model("DEPT", deptSchema);
+export const Dept = mongoose.model("DEPT", deptSchema);

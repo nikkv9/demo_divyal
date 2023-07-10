@@ -52,7 +52,7 @@
   border: 1px solid crimson;
   color: aliceblue;
 }
-.btnContainer button:nth-child(3) {
+.btnContainer .addDeptLink button {
   background-color: green;
   border: 1px solid green;
   color: aliceblue;

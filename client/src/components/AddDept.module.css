@@ -4,6 +4,7 @@
 .form {
   width: 40rem;
   margin: 0 auto;
+  padding-top: 5rem;
 }
 .fieldContainer {
   display: flex;
@@ -22,32 +23,9 @@
   font-size: 1rem;
   width: 70%;
 }
-
-.datePicker {
-  width: 100%;
-  margin-left: 5rem;
-}
-
-.fieldContainerr {
-  width: 35%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-.fieldContainerr label {
-  font-size: 1.1rem;
-}
-.radioInput {
-  display: flex;
-  align-items: center;
-}
-.radio {
-  margin-right: 3rem;
-}
-.radio input,
-span {
-  font-size: 1.2rem;
-  margin: 0 0.2rem;
+.select {
+  width: 73%;
+  height: 2.8rem;
 }
 .btnContainer {
   display: flex;
@@ -55,23 +33,18 @@ span {
   justify-content: center;
 }
 .form button {
-  padding: 0.7rem;
+  padding: 0.8rem;
   border: none;
   outline: none;
   cursor: pointer;
   font-size: 1rem;
-  width: 10rem;
   letter-spacing: 0.1rem;
   transition: 0.4s ease;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   background-color: teal;
   color: #fff;
   border-radius: 0.2rem;
 }
 .form button:hover {
   transform: scale(1.05);
-}
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
 }

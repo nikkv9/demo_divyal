@@ -11,6 +11,8 @@ import { LuAsterisk } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddEmp = () => {
   const [empName, setEmpName] = useState("");
@@ -22,8 +24,36 @@ const AddEmp = () => {
   const [doj, setDoj] = useState("");
   const [gender, setGender] = useState("");
 
+  const validateForm = () => {
+    const err = {};
+
+    const nameRegex = /^[A-Za-z]+$/;
+    if (!empName.match(nameRegex)) {
+      err.empName = "Enter only alphabets in Employee Name field";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.match(emailRegex)) {
+      err.email = "Please enter a valid email address";
+    }
+
+    if (mobile.length < 10 || mobile.length > 10) {
+      err.mobile = "Mobile number must be 10 digits!";
+    }
+
+    return err;
+  };
+
   const addEmp = async (e) => {
     e.preventDefault();
+
+    const errs = validateForm();
+
+    if (Object.keys(errs).length > 0) {
+      const firstErrorKey = Object.keys(errs)[0];
+      toast.error(errs[firstErrorKey]);
+      return;
+    }
 
     try {
       if (
@@ -37,6 +67,7 @@ const AddEmp = () => {
         !gender
       ) {
         toast.error("Please fill all the fields!");
+        return;
       }
 
       const { data } = await axios.post("/emp/add", {
@@ -49,14 +80,17 @@ const AddEmp = () => {
         doj,
         gender,
       });
+
       console.log(data);
       if (data) {
         toast.success("Employee data has been created!");
       }
     } catch (error) {
       console.log(error);
+      toast.error(error.message);
     }
   };
+
   return (
     <div className={stl.container}>
       <Header />
@@ -120,21 +154,26 @@ const AddEmp = () => {
           <label>
             DOB <LuAsterisk color="crimson" />
           </label>
-          <input
-            type="text"
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
+          <DatePicker
+            selected={dob}
+            onChange={(date) => setDob(date)}
+            wrapperClassName={stl.datePicker}
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Choose date"
+            maxDate={new Date()}
           />
         </div>
         <div className={stl.fieldContainer}>
-          <label>
+          <label className={stl.dateLabel}>
             DOJ
             <LuAsterisk color="crimson" />
           </label>
-          <input
-            type="text"
-            value={doj}
-            onChange={(e) => setDoj(e.target.value)}
+          <DatePicker
+            selected={doj}
+            onChange={(date) => setDoj(date)}
+            wrapperClassName={stl.datePicker}
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Choose date"
           />
         </div>
         <div className={stl.fieldContainerr}>
@@ -159,7 +198,9 @@ const AddEmp = () => {
             </FormControl>
           </div>
         </div>
-        <button type="submit">Add Employee</button>
+        <div className={stl.btnContainer}>
+          <button type="submit">Add Employee</button>
+        </div>
       </form>
       <ToastContainer
         autoClose={2000}
