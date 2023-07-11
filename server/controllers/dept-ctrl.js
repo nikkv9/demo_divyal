@@ -18,4 +18,28 @@ router.post("/dept/add", async (req, res) => {
   }
 });
 
+router.get("/dept/:id", async (req, res) => {
+  try {
+    const dept = await Dept.findById(req.params.id);
+    res.status(200).send(dept);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.put("/dept/:id", async (req, res) => {
+  try {
+    const dept = await Dept.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).send(dept);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export default router;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import stl from "./AddEmp.module.css";
 import Header from "./Header";
 import {
+  Box,
   FormControl,
   FormControlLabel,
   Radio,
@@ -13,16 +14,17 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const AddEmp = () => {
   const [empName, setEmpName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [dept, setDept] = useState("");
   const [address, setAddress] = useState("");
   const [dob, setDob] = useState("");
   const [doj, setDoj] = useState("");
   const [gender, setGender] = useState("");
+  const [deptId, setDeptId] = useState("");
 
   const validateForm = () => {
     const err = {};
@@ -51,8 +53,7 @@ const AddEmp = () => {
 
     if (Object.keys(errs).length > 0) {
       const firstErrorKey = Object.keys(errs)[0];
-      toast.error(errs[firstErrorKey]);
-      return;
+      return toast.error(errs[firstErrorKey]);
     }
 
     try {
@@ -60,11 +61,11 @@ const AddEmp = () => {
         !empName ||
         !email ||
         !mobile ||
-        !dept ||
         !address ||
         !dob ||
         !doj ||
-        !gender
+        !gender ||
+        !deptId
       ) {
         toast.error("Please fill all the fields!");
         return;
@@ -74,11 +75,11 @@ const AddEmp = () => {
         empName,
         email,
         mobile,
-        dept,
         address,
         dob,
         doj,
         gender,
+        deptId,
       });
 
       console.log(data);
@@ -106,6 +107,7 @@ const AddEmp = () => {
             onChange={(e) => setEmpName(e.target.value)}
           />
         </div>
+
         <div className={stl.fieldContainer}>
           <label>
             Email
@@ -128,17 +130,7 @@ const AddEmp = () => {
             onChange={(e) => setMobile(e.target.value)}
           />
         </div>
-        <div className={stl.fieldContainer}>
-          <label>
-            Department
-            <LuAsterisk color="crimson" />
-          </label>
-          <input
-            type="text"
-            value={dept}
-            onChange={(e) => setDept(e.target.value)}
-          />
-        </div>
+
         <div className={stl.fieldContainer}>
           <label>
             Address
@@ -152,41 +144,70 @@ const AddEmp = () => {
         </div>
         <div className={stl.fieldContainer}>
           <label>
+            Deparment Id
+            <LuAsterisk color="crimson" />
+          </label>
+          <input
+            type="text"
+            value={deptId}
+            onChange={(e) => setDeptId(e.target.value)}
+          />
+        </div>
+        <div className={stl.fieldContainer}>
+          <label>
             DOB <LuAsterisk color="crimson" />
           </label>
-          <DatePicker
-            selected={dob}
-            onChange={(date) => setDob(date)}
-            wrapperClassName={stl.datePicker}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Choose date"
-            maxDate={new Date()}
-          />
+          <div className={stl.dateContainer}>
+            <DatePicker
+              selected={dob}
+              onChange={(date) => setDob(date)}
+              wrapperClassName={stl.datePicker}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Choose date"
+              maxDate={new Date()}
+            />
+            <ArrowDropDownIcon className={stl.dropDown} />
+          </div>
         </div>
         <div className={stl.fieldContainer}>
           <label className={stl.dateLabel}>
             DOJ
             <LuAsterisk color="crimson" />
           </label>
-          <DatePicker
-            selected={doj}
-            onChange={(date) => setDoj(date)}
-            wrapperClassName={stl.datePicker}
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Choose date"
-          />
+          <div className={stl.dateContainer}>
+            <DatePicker
+              selected={doj}
+              onChange={(date) => setDoj(date)}
+              wrapperClassName={stl.datePicker}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Choose date"
+            />
+            <ArrowDropDownIcon className={stl.dropDown} />
+          </div>
         </div>
-        <div className={stl.fieldContainerr}>
-          <label>
+
+        <div
+          className={stl.fieldContainerr}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <label style={{ display: "flex" }}>
             Gender
             <LuAsterisk color="crimson" />
           </label>
-          <div className={stl.radioInput}>
-            <FormControl component="fieldset">
-              <RadioGroup
-                name="myRadioGroup"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
+
+          <FormControl component="fieldset">
+            <RadioGroup
+              name="myRadioGroup"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  justifyContent: "center",
+                  width: "40rem",
+                }}
               >
                 <FormControlLabel value="male" control={<Radio />} label="M" />
                 <FormControlLabel
@@ -194,10 +215,11 @@ const AddEmp = () => {
                   control={<Radio />}
                   label="F"
                 />
-              </RadioGroup>
-            </FormControl>
-          </div>
+              </Box>
+            </RadioGroup>
+          </FormControl>
         </div>
+
         <div className={stl.btnContainer}>
           <button type="submit">Add Employee</button>
         </div>

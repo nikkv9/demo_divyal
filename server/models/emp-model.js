@@ -33,9 +33,9 @@ const empSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  dept: {
-    type: String,
-    required: true,
+  deptId: {
+    type: mongoose.Types.ObjectId,
+    ref: "DEPT",
   },
 });
 

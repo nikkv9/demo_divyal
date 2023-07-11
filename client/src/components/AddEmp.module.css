@@ -22,10 +22,22 @@
   font-size: 1rem;
   width: 70%;
 }
+.dateContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 
 .datePicker {
-  width: 100%;
+  width: 22rem;
   margin-left: 5rem;
+}
+.dropDown {
+  position: absolute;
+  right: 6rem;
+  top: 0.5rem;
+  cursor: pointer;
+  width: 3rem;
 }
 
 .fieldContainerr {

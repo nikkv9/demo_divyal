@@ -72,6 +72,12 @@ const Search = () => {
     } catch (error) {
       toast.error(error.message);
     }
+    // finally {
+    //   setEmpName("");
+    //   setEmail("");
+    //   setMobile("");
+    //   setAddress("");
+    // }
   };
 
   const handleInactive = async () => {
