@@ -1,5 +1,5 @@
 .container {
-  padding: 3rem 2rem;
+  padding: 2rem;
   border-bottom: 1px solid gray;
 }
 .form {
@@ -56,4 +56,47 @@
   background-color: green;
   border: 1px solid green;
   color: aliceblue;
+}
+.tableContainer {
+  padding-top: 1rem;
+}
+.tableContainer h3 {
+  text-align: center;
+}
+
+.listTable {
+  margin-top: 2rem;
+  border: none !important;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+}
+.gridColumnHeader {
+  background-color: rgb(12, 83, 83);
+  padding: 0.7rem !important;
+  color: aliceblue;
+}
+
+.modalBtns {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: center;
+}
+.modalBtns button {
+  padding: 0.6rem;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  min-width: 5rem;
+  cursor: pointer;
+  margin: 0 1rem;
+}
+.modalBtns button:nth-child(1) {
+  background: crimson;
+}
+.modalBtns button:nth-child(2) {
+  background: teal;
 }

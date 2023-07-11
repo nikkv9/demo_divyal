@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
+
   let midText;
 
   if (location.pathname === "/") {
@@ -17,6 +18,12 @@ const Header = () => {
   }
   if (location.pathname === "/dept/add") {
     midText = "Add Department";
+  }
+  if (location.pathname.includes("/emp/update")) {
+    midText = "Update Employee";
+  }
+  if (location.pathname.includes("/dept/update")) {
+    midText = "Update Department";
   }
   return (
     <div className={stl.container}>
